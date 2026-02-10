@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Series Architect</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <!-- Sidebar with Filters -->
+    <aside class="sidebar">
+        <div class="sidebar-content">
+            <!-- Search -->
+            <div class="filter-group">
+                <div class="search-box-sidebar">
+                    <span class="search-icon">🔍</span>
+                    <input
+                        type="text"
+                        id="search-input"
+                        placeholder="Search..."
+                        autocomplete="off"
+                    >
+                    <button id="clear-search" class="clear-btn-sidebar" style="display: none;">×</button>
+                </div>
+            </div>
+
+            <!-- Language Filter -->
+            <div class="filter-group">
+                <button class="filter-header collapsed" onclick="toggleFilter('languages-content')">
+                    <span class="arrow">▶</span>
+                    <span>Language</span>
+                </button>
+                <div id="languages-content" class="filter-content">
+                    <button class="clear-category-btn-minimal" onclick="clearCategory(event, 'languages')">Clear Selection</button>
+                    <div class="sidebar-grid">
+                        <button class="img-btn-sidebar" data-category="languages" data-value="en">
+                            <img src="{{ url_for('static', filename='assets/flags/usa.png') }}" alt="English">
+                        </button>
+                        <button class="img-btn-sidebar" data-category="languages" data-value="he">
+                            <img src="{{ url_for('static', filename='assets/flags/israel.png') }}" alt="Hebrew">
+                        </button>
+                        <button class="img-btn-sidebar" data-category="languages" data-value="es">
+                            <img src="{{ url_for('static', filename='assets/flags/spain.png') }}" alt="Spanish">
+                        </button>
+                        <button class="img-btn-sidebar" data-category="languages" data-value="ja">
+                            <img src="{{ url_for('static', filename='assets/flags/japan.png') }}" alt="Japanese">
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Decades Filter -->
+            <div class="filter-group">
+                <button class="filter-header collapsed" onclick="toggleFilter('decades-content')">
+                    <span class="arrow">▶</span>
+                    <span>Decades</span>
+                </button>
+                <div id="decades-content" class="filter-content">
+                    <button class="clear-category-btn-minimal" onclick="clearCategory(event, 'decades')">Clear Selection</button>
+                    <div class="sidebar-grid">
+                        <button class="text-btn-sidebar" data-category="decades" data-value="1980">1980s</button>
+                        <button class="text-btn-sidebar" data-category="decades" data-value="1990">1990s</button>
+                        <button class="text-btn-sidebar" data-category="decades" data-value="2000">2000s</button>
+                        <button class="text-btn-sidebar" data-category="decades" data-value="2010">2010s</button>
+                        <button class="text-btn-sidebar" data-category="decades" data-value="2020">2020+</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Genres Filter -->
+            <div class="filter-group">
+                <button class="filter-header collapsed" onclick="toggleFilter('genres-content')">
+                    <span class="arrow">▶</span>
+                    <span>Genres</span>
+                </button>
+                <div id="genres-content" class="filter-content">
+                    <button class="clear-category-btn-minimal" onclick="clearCategory(event, 'genres')">Clear Selection</button>
+                    <div class="sidebar-grid genres-grid">
+                        {% for genre in genres %}
+                        <button class="text-btn-sidebar" data-category="genres" data-value="{{ genre }}">
+                            {{ genre }}
+                        </button>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clear All Filters -->
+            <div class="filter-group">
+                <button id="clear-all-btn" class="clear-all-btn">
+                    Clear All Filters
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-wrapper">
+            <!-- Header -->
+            <header class="main-header">
+                <h1 class="main-title">Rate Your Shows</h1>
+                <p class="subtitle">Help us understand your taste</p>
+            </header>
+
+            <!-- Series Grid -->
+            <div id="series-grid" class="series-grid">
+                <div class="loading">Loading series...</div>
+            </div>
+        </div>
+
+        <!-- Fixed Bottom Bar -->
+        <div class="bottom-bar">
+            <div class="bottom-bar-content">
+                <!-- Navigation Arrows -->
+                <button id="scroll-left" class="thumbnail-nav left" style="display: none;">‹</button>
+
+                <!-- Liked Series Thumbnails -->
+                <div id="liked-thumbnails" class="liked-thumbnails"></div>
+
+                <button id="scroll-right" class="thumbnail-nav right" style="display: none;">›</button>
+
+                <div class="rating-info">
+                    <div class="rating-counter">
+                        <span id="likes-count">0</span>/<span>10</span> likes
+                    </div>
+                    <button id="continue-btn" class="continue-btn" disabled>
+                        Continue to Recommendations
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

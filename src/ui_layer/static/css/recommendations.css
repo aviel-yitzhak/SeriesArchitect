@@ -1,0 +1,295 @@
+/* ========================================
+   Recommendations Page Styles
+   ======================================== */
+
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Header */
+.rec-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.rec-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.rec-subtitle {
+    font-size: 1rem;
+    color: #b8b8b8;
+}
+
+/* Loading State */
+.loading-state {
+    text-align: center;
+    padding: 4rem;
+}
+
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-top: 4px solid #6f42c1;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Recommendations Grid */
+.recommendations-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+/* Recommendation Card */
+.rec-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 0.8rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.rec-card:hover {
+    border-color: rgba(111, 66, 193, 0.5);
+    box-shadow: 0 0 20px rgba(111, 66, 193, 0.3);
+    transform: translateY(-4px);
+}
+
+.rec-card .poster-container {
+    width: 100%;
+    aspect-ratio: 2/3;
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.rec-card .poster-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.rec-card .poster-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.rec-card-title {
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 1.3;
+    min-height: 2.6em;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 100%;
+}
+
+.rec-card-genres {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #b8b8b8;
+    min-height: 1.5em;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+}
+
+.modal-content {
+    position: relative;
+    background: linear-gradient(135deg, #0f0c29 0%, #1a1a2e 100%);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 2rem;
+    z-index: 10000;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(220, 53, 69, 0.2);
+    border: 2px solid rgba(220, 53, 69, 0.4);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: #dc3545;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: rgba(220, 53, 69, 0.3);
+    border-color: rgba(220, 53, 69, 0.6);
+}
+
+.modal-body {
+    display: flex;
+    gap: 2rem;
+}
+
+.modal-poster {
+    flex-shrink: 0;
+    width: 250px;
+}
+
+.modal-poster img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+.modal-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.modal-info h2 {
+    font-size: 2rem;
+    color: #ffffff;
+    margin: 0;
+}
+
+.modal-rating {
+    font-size: 1.2rem;
+    color: #ffd700;
+}
+
+.modal-genres {
+    color: #b8b8b8;
+    font-size: 0.9rem;
+}
+
+.modal-meta {
+    color: #b8b8b8;
+    font-size: 0.9rem;
+}
+
+.modal-overview {
+    margin-top: 1rem;
+}
+
+.modal-overview h3 {
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.modal-overview p {
+    color: #d8d8d8;
+    line-height: 1.6;
+}
+
+.modal-close-btn {
+    background: #6f42c1;
+    border: 2px solid #6f42c1;
+    border-radius: 8px;
+    padding: 0.8rem 2rem;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.modal-close-btn:hover {
+    background: rgba(111, 66, 193, 0.9);
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 1600px) {
+    .recommendations-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+@media (max-width: 1400px) {
+    .recommendations-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .container {
+        max-width: 1200px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .recommendations-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .recommendations-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .modal-body {
+        flex-direction: column;
+    }
+
+    .modal-poster {
+        width: 100%;
+    }
+}

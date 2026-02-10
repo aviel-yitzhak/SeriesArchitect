@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Recommendations - Series Architect</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/recommendations.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="rec-header">
+            <h1 class="rec-title">Your Personalized Picks</h1>
+            <p class="rec-subtitle">Based on your liked shows</p>
+        </header>
+
+        <!-- Loading State -->
+        <div id="loading" class="loading-state">
+            <div class="spinner"></div>
+            <p>Finding your perfect matches...</p>
+        </div>
+
+        <!-- Recommendations Grid -->
+        <div id="recommendations-grid" class="recommendations-grid" style="display: none;">
+            <!-- Cards will be inserted here by JS -->
+        </div>
+    </div>
+
+    <!-- Modal for Series Details -->
+    <div id="series-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">×</button>
+
+            <div class="modal-body">
+                <div class="modal-poster">
+                    <img id="modal-poster-img" src="" alt="">
+                </div>
+
+                <div class="modal-info">
+                    <h2 id="modal-title"></h2>
+                    <div id="modal-rating" class="modal-rating"></div>
+                    <div id="modal-genres" class="modal-genres"></div>
+                    <div id="modal-years" class="modal-meta"></div>
+                    <div id="modal-status" class="modal-meta"></div>
+                    <div id="modal-country" class="modal-meta"></div>
+                    <div id="modal-streaming" class="modal-meta"></div>
+
+                    <div class="modal-overview">
+                        <h3>Overview</h3>
+                        <p id="modal-overview-text"></p>
+                    </div>
+
+                    <button class="modal-close-btn" onclick="closeModal()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/recommendations.js') }}"></script>
+</body>
+</html>
